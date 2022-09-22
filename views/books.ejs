@@ -1,0 +1,19 @@
+<header>
+    <%- include("../views/partials/header", {title:'Hi Bookie!'})-%>
+</header>
+<body>
+    <%- include("../views/partials/navbar") %> 
+
+    <ul>
+        <h1>All the books:</h1>
+        <% bookData.forEach(function(item) { %>
+            <li>
+                <%= item.name %> 
+            </li>
+    <%}); %> 
+    </ul>
+</body>
+<footer >
+    <%- include("../views/partials/footer")-%>
+</footer>
+</html>
