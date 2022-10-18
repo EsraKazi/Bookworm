@@ -5,10 +5,10 @@
     <%- include("../views/partials/navbar") %> 
 
     <ul>
-        <h1>All the books:</h1>
-        <% bookData.forEach(function(item) { %>
+        <h1>All the users:</h1>
+        <% userData.forEach(function(user) { %>
             <li>
-                <%= item.title %> 
+                <%= user.username %> 
             </li>
     <%}); %> 
     </ul>
