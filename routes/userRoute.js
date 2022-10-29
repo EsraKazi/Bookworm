@@ -1,6 +1,7 @@
 const express = require('express');
 const { 
     getUsers,
+    getUser,
     getSignIn,
     postSignIn,
     getSignUp,
@@ -9,14 +10,17 @@ const {
 } = require('../controllers/userController');
 const router = express.Router();
 
-router.get('/', getUsers);
+router.get('/users', getUsers); // All users
 
-router.get('/login', getSignIn);
+router.get('/:username',getUser); //user profile, not completed
 
-router.post('/login', postSignIn);
+router.get('/login', getSignIn); // Getting sign in page
 
-router.get('/register',getSignUp);
+router.post('/login', postSignIn); // Posting ^^
+
+router.get('/register',getSignUp); // Getting sign Up Page
 
 router.post('/register', postSignUp);
+
 
 module.exports = router;

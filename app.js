@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 require("dotenv").config();
 var bookRouter = require('./routes/bookRoute');
 var indexRouter = require('./routes/indexRoute');
@@ -9,11 +9,12 @@ var userRouter = require('./routes/userRoute');
 
 const mongodbConnection =  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.jytlndi.mongodb.net/bookworm`;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : true}));
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended : true}));
 
 app.use('/',indexRouter);
-app.use('/user',userRouter);
+app.use('/auth',userRouter);
 app.use('/books',bookRouter);
 
 

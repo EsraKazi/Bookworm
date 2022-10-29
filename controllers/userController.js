@@ -12,23 +12,18 @@ getUsers =('/',async (req, res) => {
     }
 })
 
-postSignUp = ('/register', async (req, res) => {
-    
-    const user = new Users({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    });
 
+
+getUser = ( ':username' , async (req,res) => {
+    username = req.params.username;
     try {
-        const savedUser = await user.save();
-        return res.redirect('/user');
-        console.log("ya da burada");
+        const userNew = await Users.find({username: username})
+        res.render("userNew.ejs", {
+            userData: userNew})
     } catch (error) {
         res.render('error.ejs');
-        
     }
-})
+  })
 
 getSignIn = (req, res) => {
     res.render("index.ejs");
@@ -36,11 +31,35 @@ getSignIn = (req, res) => {
 postSignIn= (req, res) => {
     res.render("index.ejs");
 };
+
 getSignUp= (req, res) => {
-    res.render("userCreate.ejs");
+    res.render("userSignUp.ejs");
 };
+
+
+postSignUp = ('/register', async (req, res) => {
+    
+    const user = new Users({    //ok
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    });
+    if (user.password.length < 6) {     //ok
+        return res.render('userSignUp.ejs');
+      }
+
+    try {
+        const savedUser = await user.save();    //ok
+        return res.redirect('/auth/user');
+    } catch (error) {
+        res.render('error.ejs');
+        
+    }
+})
+
 module.exports = {
     getUsers,
+    getUser,
     getSignIn,
     postSignIn,
     getSignUp,

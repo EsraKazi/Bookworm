@@ -2,8 +2,13 @@
     <%- include("../views/partials/header", {title:'Hi Bookie!'})-%>
 </header>
 <body>
-    <%- include("../views/partials/navbar") %> 
-    <p>this is a new user page</p>
+    <%- include("../views/partials/navbar") %>  
+
+    <% userData.forEach(function(user){ %> 
+        <h3><%= user.usernames %> </h3>
+        <h4><%= user.email %> </h4>
+
+    <%}); %>
 </body>
 <footer >
     <%- include("../views/partials/footer")-%>
