@@ -14,11 +14,11 @@ getUsers =('/',async (req, res) => {
 
 
 
-getUser = ( ':username' , async (req,res) => {
+getUser = ( '/users/:username' , async (req,res) => {
     username = req.params.username;
     try {
         const userNew = await Users.find({username: username})
-        res.render("userNew.ejs", {
+        res.render("userProfile.ejs", {
             userData: userNew})
     } catch (error) {
         res.render('error.ejs');
@@ -49,8 +49,9 @@ postSignUp = ('/register', async (req, res) => {
       }
 
     try {
-        const savedUser = await user.save();    //ok
-        return res.redirect('/auth/user');
+        const savedUser = await user.save(); 
+        const newUser = '/auth/users/'+`${user.username}`
+        return res.redirect(newUser);
     } catch (error) {
         res.render('error.ejs');
         

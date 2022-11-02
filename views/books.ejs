@@ -8,6 +8,8 @@
         <h1>All the books:</h1>
         <% bookData.forEach(function(item) { %>
             <li>
+                
+                <a href="/books/<%= item.title %>">
                 <%= item.title %> 
             </li>
     <%}); %> 

@@ -1,0 +1,16 @@
+<header>
+    <%- include("../views/partials/header", {title:'Hi Bookie!'})-%>
+</header>
+<body>
+    <%- include("../views/partials/navbar") %>  
+
+    <% bookData.forEach(function(book){ %> 
+        <h3><%= book.title %> </h3>
+        <h4><%= book.author %> </h4>
+
+    <%}); %>
+</body>
+<footer >
+    <%- include("../views/partials/footer")-%>
+</footer>
+</html>

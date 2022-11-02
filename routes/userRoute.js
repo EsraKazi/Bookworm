@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get('/users', getUsers); // All users
 
-router.get('/:username',getUser); //user profile, not completed
+router.get('/users/:username',getUser); //user profile, not completed
 
 router.get('/login', getSignIn); // Getting sign in page
 
