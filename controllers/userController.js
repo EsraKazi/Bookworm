@@ -1,4 +1,5 @@
 const Users = require("../models/User");
+const bcrypt = require('bcrypt');
 
 getUsers =('/',async (req, res) => {
     try {
@@ -38,15 +39,18 @@ getSignUp= (req, res) => {
 
 
 postSignUp = ('/register', async (req, res) => {
-    
-    const user = new Users({    //ok
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
+
+    const { 
+        username,
+        email,
+        password
+    } = req.body;
+    const hashedPassword = await bcrypt.hash(password,10);
+    const user = new Users({
+        username,
+        email,
+        password: hashedPassword
     });
-    if (user.password.length < 6) {     //ok
-        return res.render('userSignUp.ejs');
-      }
 
     try {
         const savedUser = await user.save(); 
