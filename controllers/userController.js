@@ -41,12 +41,14 @@ getSignUp= (req, res) => {
 postSignUp = ('/register', async (req, res) => {
 
     const { 
+        fullname,
         username,
         email,
         password
     } = req.body;
     const hashedPassword = await bcrypt.hash(password,10);
     const user = new Users({
+        fullname,
         username,
         email,
         password: hashedPassword

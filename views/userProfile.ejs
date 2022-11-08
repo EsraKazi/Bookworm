@@ -5,9 +5,12 @@
     <%- include("../views/partials/navbar") %>  
 
     <% userData.forEach(function(user){ %> 
-        <h3><%= user.usernames %> </h3>
-        <h4><%= user.email %> </h4>
-
+        <h3><%= user.username %> </h3>
+        <% if(user.fullname!=null){ %> 
+            <h5><%= user.fullname %> Kullanıcısının Profili</h5>
+        <% }else{ %>
+            <h5>Kullanıcı Profili</h5>
+        <% } %> 
     <%}); %>
 </body>
 <footer >
