@@ -2,25 +2,18 @@ const express = require('express');
 const { 
     getUsers,
     getUser,
-    getSignIn,
-    postSignIn,
-    getSignUp,
-    postSignUp
+ //   updateUser,
+ //   deleteUser
 
 } = require('../controllers/userController');
 const router = express.Router();
 
-router.get('/users', getUsers); // All users
+router.get('/', getUsers); // All users
 
-router.get('/users/:username',getUser); //user profile, not completed
+router.get('/user-profile/:username',getUser); //user profile, not completed
 
-router.get('/login', getSignIn); // Getting sign in page
+//router.put('/users/:username', updateUser);
 
-router.post('/login', postSignIn); // Posting ^^
-
-router.get('/register',getSignUp); // Getting sign Up Page
-
-router.post('/register', postSignUp);
-
+//router.delete('/users/:username', deleteUser);
 
 module.exports = router;

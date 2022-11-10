@@ -1,5 +1,6 @@
 const Users = require("../models/User");
-const bcrypt = require('bcrypt');
+
+
 
 getUsers =('/',async (req, res) => {
     try {
@@ -16,6 +17,7 @@ getUsers =('/',async (req, res) => {
 
 
 getUser = ( '/users/:username' , async (req,res) => {
+    console.log(req.session.isAuth);
     username = req.params.username;
     try {
         const userNew = await Users.find({username: username})
@@ -26,50 +28,29 @@ getUser = ( '/users/:username' , async (req,res) => {
     }
   })
 
-getSignIn = (req, res) => {
-    res.render("index.ejs");
-};
-postSignIn= (req, res) => {
-    res.render("index.ejs");
-};
-
-getSignUp= (req, res) => {
-    res.render("userSignUp.ejs");
-};
-
-
-postSignUp = ('/register', async (req, res) => {
-
-    const { 
-        fullname,
-        username,
-        email,
-        password
-    } = req.body;
-    const hashedPassword = await bcrypt.hash(password,10);
-    const user = new Users({
-        fullname,
-        username,
-        email,
-        password: hashedPassword
-    });
-
-    try {
-        const savedUser = await user.save(); 
-        const newUser = '/auth/users/'+`${user.username}`
-        return res.redirect(newUser);
-    } catch (error) {
-        res.render('error.ejs');
-        
+  
+  
+/*updateUser = ('/users/:username', async(req,res)=>{
+    if(user.username == req.params.username){
+        console.log('You can update this user');
+    }else{
+        console.log('Only the user itself update the profile');
     }
-})
+})*/
+
+
+/*deleteUser = ('/users/:username', async(req,res)=>{
+    if(user.isAdmin == True){
+        console.log('You can delete this user');
+    }else{
+        console.log('Only Admin can do this');
+    }
+})*/
+
 
 module.exports = {
     getUsers,
     getUser,
-    getSignIn,
-    postSignIn,
-    getSignUp,
-    postSignUp
-
+    //  updateUser,
+    //  deleteUser
 }
