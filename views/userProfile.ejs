@@ -6,14 +6,12 @@
 
     <% userData.forEach(function(user){ %> 
         <h3><%= user.username %> </h3>
-        <% if(user.fullname!=null){ %> 
+        <% if(user.fullname){ %> 
             <h5><%= user.fullname %> Kullanıcısının Profili</h5>
         <% }else{ %>
             <h5>Kullanıcı Profili</h5>
         <% } %> 
     <%}); %>
-    
-    <button type ="button">Çıkış yap</button>
 </body>
 <footer >
     <%- include("../views/partials/footer")-%>

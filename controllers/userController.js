@@ -16,8 +16,7 @@ getUsers =('/',async (req, res) => {
 
 
 
-getUser = ( '/users/:username' , async (req,res) => {
-    console.log(req.session.isAuth);
+getUser = ( '/:username' , async (req,res) => {
     username = req.params.username;
     try {
         const userNew = await Users.find({username: username})
@@ -30,7 +29,7 @@ getUser = ( '/users/:username' , async (req,res) => {
 
   
   
-/*updateUser = ('/users/:username', async(req,res)=>{
+/*updateUser = ('/:username', async(req,res)=>{
     if(user.username == req.params.username){
         console.log('You can update this user');
     }else{
@@ -39,8 +38,8 @@ getUser = ( '/users/:username' , async (req,res) => {
 })*/
 
 
-/*deleteUser = ('/users/:username', async(req,res)=>{
-    if(user.isAdmin == True){
+/*deleteUser = ('/:username', async(req,res)=>{
+    if(user.isAdmin){
         console.log('You can delete this user');
     }else{
         console.log('Only Admin can do this');

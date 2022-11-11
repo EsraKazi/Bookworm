@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/', getUsers); // All users
 
-router.get('/user-profile/:username',getUser); //user profile, not completed
+router.get('/:username',getUser); //user profile, not completed
 
 //router.put('/users/:username', updateUser);
 
