@@ -38,18 +38,23 @@ getUser = ( '/:username' , async (req,res) => {
 })*/
 
 
-/*deleteUser = ('/:username', async(req,res)=>{
-    if(user.isAdmin){
-        console.log('You can delete this user');
-    }else{
-        console.log('Only Admin can do this');
+deleteUser = ( '/:username' , async (req,res) => {
+    username = req.params.username;
+    try {
+        const userNew = await Users.findByIdAndDelete({username: username})
+        var user = await Users.find();
+        res.render('users.ejs',{
+            userData: user
+        }) 
+    } catch (error) {
+        res.render('error.ejs');
     }
-})*/
+  })
 
 
 module.exports = {
     getUsers,
     getUser,
     //  updateUser,
-    //  deleteUser
+    deleteUser
 }

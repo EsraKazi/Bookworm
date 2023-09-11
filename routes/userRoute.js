@@ -3,7 +3,7 @@ const {
     getUsers,
     getUser,
  //   updateUser,
- //   deleteUser
+    deleteUser
 
 } = require('../controllers/userController');
 const router = express.Router();
@@ -14,6 +14,6 @@ router.get('/:username',getUser); //user profile, not completed
 
 //router.put('/users/:username', updateUser);
 
-//router.delete('/users/:username', deleteUser);
+router.delete('/:username', deleteUser);
 
 module.exports = router;

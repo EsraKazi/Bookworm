@@ -1,0 +1,16 @@
+<header>
+    <%- include("../views/partials/header", {title:'Hi Bookie!'})-%>
+</header>
+<body>
+    <%- include("../views/partials/navbar") %>
+    <h3>Bu alanı görüntüleyebilmek için giriş yapmalısınız</h3>
+    
+    <form action="/auth/login" method="GET">
+        <button type ="submit">Giriş Yap!</button>
+    </form>
+
+</body>
+<footer >
+    <%- include("../views/partials/footer")-%>
+</footer>
+</html>
